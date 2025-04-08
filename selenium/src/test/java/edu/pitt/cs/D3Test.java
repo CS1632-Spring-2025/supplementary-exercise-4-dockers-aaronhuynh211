@@ -41,7 +41,6 @@ public class D3Test {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
     driver = new ChromeDriver(options);
-    driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
@@ -58,7 +57,7 @@ public class D3Test {
       String attribute = element.getAttribute("href");
       vars.put("reset", attribute);
     }
-    assertEquals(vars.get("reset").toString(), "http://localhost:8080//reset");
+    assertEquals(vars.get("reset").toString(), "http://localhost:8080/reset");
   }
   @Test
   public void tEST2RESET() {
@@ -80,7 +79,7 @@ public class D3Test {
       String attribute = element.getAttribute("src");
       vars.put("cat2", attribute);
     }
-    assertEquals(vars.get("cat2").toString(), "http://localhost:8080//images/cat2.jpg");
+    assertEquals(vars.get("cat2").toString(), "http://localhost:8080/images/cat2.jpg");
   }
   @Test
   public void tEST4LISTING() {
@@ -121,7 +120,7 @@ public class D3Test {
   }
   @Test
   public void tEST6RENT() {
-    driver.get("http://localhost:8080///");
+    driver.get("http://localhost:8080/");
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     driver.findElement(By.linkText("Rent-A-Cat")).click();
     driver.findElement(By.xpath("//input[@id=\'rentID\']")).click();
@@ -134,7 +133,7 @@ public class D3Test {
   }
   @Test
   public void tEST7RETURN() {
-    driver.get("http://localhost:8080///");
+    driver.get("http://localhost:8080/");
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=true\";document.cookie = \"3=false\";");
     driver.findElement(By.xpath("//a[contains(text(),\'Rent-A-Cat\')]")).click();
